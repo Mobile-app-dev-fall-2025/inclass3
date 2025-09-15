@@ -92,11 +92,11 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
     List<Map<String, String>> forecast = [];
     for (int i = 1; i <= 7; i++) {
-      int temp = 15 + random.nextInt(16);
+      int temp = 75;
       String cond = conditions[random.nextInt(conditions.length)];
       forecast.add({
         "day": "Day $i",
-        "temp": "$temp°C",
+        "temp": "$temp°F",
         "cond": cond,
       });
     }
@@ -194,7 +194,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                           child: ListTile(
                             title: Text(dayForecast["day"]!),
                             subtitle: Text(
-                                "${dayForecast["temp"]} - ${dayForecast["cond"]}"),
+                                "${dayForecast["temp"]} and ${dayForecast["cond"]}"),
                           ),
                         );
                       },
