@@ -79,14 +79,9 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                 Text(
                   'Spinning Cat',
                   style: TextStyle(
-                    fontSize: 40, // make text bigger
+                    fontSize: 60, // make text bigger
                     fontWeight: FontWeight.bold, // bold text
-                    color: const Color.fromARGB(
-                      255,
-                      255,
-                      33,
-                      25,
-                    ), // custom color
+                    color: const Color.fromARGB(255, 255, 0, 0), // custom color
                     letterSpacing: 2, // space between letters
                   ),
                   textAlign: TextAlign.center, // center align text
@@ -94,8 +89,8 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                 SizedBox(height: 20), // spacing between text and button
                 Image.network(
                   'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXA0NHVhMXJhd213c2s0b3ljOXM2ODJqZ2w3cXIxdjdzcnQ0ZmxtOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif', // replace with real URL
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                 ),
               ],
             ),
