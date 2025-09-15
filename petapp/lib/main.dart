@@ -57,7 +57,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   @override
   Widget build(BuildContext context) {
     // For the To do task hint: consider defining the widget and name of the tabs here
-    final tabs = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'];
+    final tabs = ['Cat 1', 'Cat 2', 'Cat 3', 'Cat 4'];
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
@@ -101,20 +101,26 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             child: Column(
               mainAxisSize: MainAxisSize.min,
               children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      labelText: 'Enter text here',
-                    ),
+                Text(
+                  'Sus Cat',
+                  style: TextStyle(
+                    fontSize: 60, // make text bigger
+                    fontWeight: FontWeight.bold, // bold text
+                    color: const Color.fromARGB(
+                      255,
+                      47,
+                      61,
+                      255,
+                    ), // custom color
+                    letterSpacing: 2, // space between letters
                   ),
+                  textAlign: TextAlign.center, // center align text
                 ),
                 SizedBox(height: 20), // space between textfield and image
                 Image.network(
                   'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcThzM2Nva3U5Ynp0MGhzdW9hNzY5YXMyeWx6NWI4YW1idGkxeHZmOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wr7oA0rSjnWuiLJOY5/giphy.gif', // replace with real URL
-                  width: 150,
-                  height: 150,
+                  width: 300,
+                  height: 300,
                 ),
               ],
             ),
