@@ -61,7 +61,14 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     return Scaffold(
       appBar: AppBar(
         automaticallyImplyLeading: false,
-        title: Text('Which cat is the best?'),
+        title: Text(
+          'Which cat is the best?',
+          style: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.bold,
+            color: const Color.fromARGB(255, 0, 101, 196),
+          ),
+        ),
         bottom: TabBar(
           controller: _tabController,
           isScrollable: false,
