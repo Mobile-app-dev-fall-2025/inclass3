@@ -207,12 +207,10 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
           //tab 3 and 4 blank
           Center(
-            child: Text("Content for Tab 3",
-                style: const TextStyle(fontSize: 20)),
+            child: Text("Tab 3",),
           ),
           Center(
-            child: Text("Content for Tab 4",
-                style: const TextStyle(fontSize: 20)),
+            child: Text("Tab 4",),
           ),
         ],
       ),
