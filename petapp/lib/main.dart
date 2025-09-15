@@ -157,12 +157,33 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
           ),
 
           // Fourth tab → default text
-          ListView(
-            children: const <Widget>[
-              ListTile(leading: Icon(Icons.map), title: Text('Map')),
-              ListTile(leading: Icon(Icons.photo_album), title: Text('Album')),
-              ListTile(leading: Icon(Icons.phone), title: Text('Phone')),
-            ],
+          Center(
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Scared Cat',
+                  style: TextStyle(
+                    fontSize: 60, // make text bigger
+                    fontWeight: FontWeight.bold, // bold text
+                    color: const Color.fromARGB(
+                      255,
+                      234,
+                      1,
+                      247,
+                    ), // custom color
+                    letterSpacing: 2, // space between letters
+                  ),
+                  textAlign: TextAlign.center, // center align text
+                ),
+                SizedBox(height: 20), // space between textfield and image
+                Image.network(
+                  'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmszMW96djFxcXFzNm9xbmtsZGVyNWZ0YjIyNXF6eHhvOHNrdnlxNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nR4L10XlJcSeQ/giphy.gif', // replace with real URL
+                  width: 300,
+                  height: 300,
+                ),
+              ],
+            ),
           ),
         ],
       ),
