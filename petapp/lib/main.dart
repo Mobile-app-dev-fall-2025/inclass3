@@ -78,118 +78,107 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
       body: TabBarView(
         controller: _tabController,
         children: [
-          // First tab → Custom Text widget + Button
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min, // centers content vertically
-              children: [
-                Text(
-                  'Spinning Cat',
-                  style: TextStyle(
-                    fontSize: 60, // make text bigger
-                    fontWeight: FontWeight.bold, // bold text
-                    color: const Color.fromARGB(255, 255, 0, 0), // custom color
-                    letterSpacing: 2, // space between letters
+          // First tab → red background
+          Container(
+            color: Colors.red.shade50,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Spinning Cat',
+                    style: TextStyle(
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.red,
+                    ),
                   ),
-                  textAlign: TextAlign.center, // center align text
-                ),
-                SizedBox(height: 20), // spacing between text and button
-                Image.network(
-                  'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXA0NHVhMXJhd213c2s0b3ljOXM2ODJqZ2w3cXIxdjdzcnQ0ZmxtOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif', // replace with real URL
-                  width: 300,
-                  height: 300,
-                ),
-              ],
+                  SizedBox(height: 20),
+                  Image.network(
+                    'https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExNXA0NHVhMXJhd213c2s0b3ljOXM2ODJqZ2w3cXIxdjdzcnQ0ZmxtOCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9cw/ztisqLhP99tVSHG136/giphy.gif',
+                    width: 300,
+                    height: 300,
+                  ),
+                ],
+              ),
             ),
           ),
 
-          // Second tab → Text input + Image
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Sus Cat',
-                  style: TextStyle(
-                    fontSize: 60, // make text bigger
-                    fontWeight: FontWeight.bold, // bold text
-                    color: const Color.fromARGB(
-                      255,
-                      47,
-                      61,
-                      255,
-                    ), // custom color
-                    letterSpacing: 2, // space between letters
+          // Second tab → blue background
+          Container(
+            color: Colors.blue.shade50,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Sus Cat',
+                    style: TextStyle(
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
                   ),
-                  textAlign: TextAlign.center, // center align text
-                ),
-                SizedBox(height: 20), // space between textfield and image
-                Image.network(
-                  'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcThzM2Nva3U5Ynp0MGhzdW9hNzY5YXMyeWx6NWI4YW1idGkxeHZmOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wr7oA0rSjnWuiLJOY5/giphy.gif', // replace with real URL
-                  width: 300,
-                  height: 300,
-                ),
-              ],
+                  SizedBox(height: 20),
+                  Image.network(
+                    'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExcThzM2Nva3U5Ynp0MGhzdW9hNzY5YXMyeWx6NWI4YW1idGkxeHZmOSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/wr7oA0rSjnWuiLJOY5/giphy.gif',
+                    width: 300,
+                    height: 300,
+                  ),
+                ],
+              ),
             ),
           ),
 
-          // Third tab → default text
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Cat Dev',
-                  style: TextStyle(
-                    fontSize: 60, // make text bigger
-                    fontWeight: FontWeight.bold, // bold text
-                    color: const Color.fromARGB(
-                      255,
-                      3,
-                      250,
-                      56,
-                    ), // custom color
-                    letterSpacing: 2, // space between letters
+          // Third tab → green background
+          Container(
+            color: Colors.green.shade50,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Cat Dev',
+                    style: TextStyle(
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.green,
+                    ),
                   ),
-                  textAlign: TextAlign.center, // center align text
-                ),
-                SizedBox(height: 20), // space between textfield and image
-                Image.network(
-                  'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3FhNjNhNHBnYzl0ZzNxZ2hsZ3ZhN2R3YThyNnM3aW1zcHYxNm9xdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJNoBCvQYp7nq/giphy.gif', // replace with real URL
-                  width: 300,
-                  height: 300,
-                ),
-              ],
+                  SizedBox(height: 20),
+                  Image.network(
+                    'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3FhNjNhNHBnYzl0ZzNxZ2hsZ3ZhN2R3YThyNnM3aW1zcHYxNm9xdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJNoBCvQYp7nq/giphy.gif',
+                    width: 300,
+                    height: 300,
+                  ),
+                ],
+              ),
             ),
           ),
 
-          // Fourth tab → default text
-          Center(
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Scared Cat',
-                  style: TextStyle(
-                    fontSize: 60, // make text bigger
-                    fontWeight: FontWeight.bold, // bold text
-                    color: const Color.fromARGB(
-                      255,
-                      234,
-                      1,
-                      247,
-                    ), // custom color
-                    letterSpacing: 2, // space between letters
+          // Fourth tab → purple background
+          Container(
+            color: Colors.purple.shade50,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    'Scared Cat',
+                    style: TextStyle(
+                      fontSize: 60,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.purple,
+                    ),
                   ),
-                  textAlign: TextAlign.center, // center align text
-                ),
-                SizedBox(height: 20), // space between textfield and image
-                Image.network(
-                  'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmszMW96djFxcXFzNm9xbmtsZGVyNWZ0YjIyNXF6eHhvOHNrdnlxNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nR4L10XlJcSeQ/giphy.gif', // replace with real URL
-                  width: 300,
-                  height: 300,
-                ),
-              ],
+                  SizedBox(height: 20),
+                  Image.network(
+                    'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExcmszMW96djFxcXFzNm9xbmtsZGVyNWZ0YjIyNXF6eHhvOHNrdnlxNCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/nR4L10XlJcSeQ/giphy.gif',
+                    width: 300,
+                    height: 300,
+                  ),
+                ],
+              ),
             ),
           ),
         ],
