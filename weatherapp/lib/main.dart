@@ -30,9 +30,9 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   // Weather state variables
   final TextEditingController _cityController = TextEditingController();
-  String _cityName = "---";
-  String _temperature = "---";
-  String _condition = "---";
+  String _cityName = "_____";
+  String _temperature = "_____";
+  String _condition = "_____";
 
   @override
   String get restorationId => 'tab_non_scrollable_demo';
@@ -70,13 +70,13 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   // Simulate weather data
   void _simulateWeather(String city) {
     final random = Random();
-    final int temperature = 15 + random.nextInt(16); // 15–30
+    final int temperature = 70;
     final List<String> conditions = ["Sunny", "Cloudy", "Rainy"];
     final String condition = conditions[random.nextInt(conditions.length)];
 
     setState(() {
       _cityName = city;
-      _temperature = "$temperature°C";
+      _temperature = "$temperature°F";
       _condition = condition;
     });
   }
@@ -84,6 +84,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   @override
   Widget build(BuildContext context) {
     final tabs = ['Weather', 'Tab 2', 'Tab 3', 'Tab 4'];
+    //idk what im supposed to put on diff tabs
 
     return Scaffold(
       appBar: AppBar(
@@ -109,7 +110,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                   controller: _cityController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Enter city name",
+                    labelText: "Enter city name:",
                   ),
                 ),
                 const SizedBox(height: 10),
