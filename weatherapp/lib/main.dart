@@ -29,6 +29,12 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   final RestorableInt tabIndex = RestorableInt(0);
 
+  //weather state variables
+  final TextEditingController _cityController = TextEditingController();
+  String _cityName = "---";
+  String _temperature = "---";
+  String _condition = "---";
+
   @override
   String get restorationId => 'tab_non_scrollable_demo';
 
@@ -64,7 +70,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   @override
   Widget build(BuildContext context) {
 
-  final tabs = ['Tab 1', 'Tab 2', 'Tab 3', 'Tab 4'];
+  final tabs = ['Weather', 'Tab 2', 'Tab 3', 'Tab 4'];
   
   return Scaffold(
     appBar: AppBar(
@@ -82,10 +88,41 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     body: TabBarView(
       controller: _tabController,
       children: [
-        for (final tab in tabs)
-          Center(
-              child: Text(tab),
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextField(
+                  controller: _cityController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Enter city name",
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_cityController.text.isNotEmpty) {
+                      _simulateWeather(_cityController.text);
+                    }
+                  },
+                  child: const Text("Fetch Weather"),
+                ),
+                const SizedBox(height: 20),
+                Text("City: $_cityName", style: const TextStyle(fontSize: 18)),
+                Text("Temperature: $_temperature", style: const TextStyle(fontSize: 18)),
+                Text("Condition: $_condition", style: const TextStyle(fontSize: 18)),
+              ],
+            ),
           ),
+
+          // ✅ Other Tabs: Placeholders
+          for (int i = 2; i <= 4; i++)
+            Center(
+              child: Text("Content for Tab $i",
+                  style: const TextStyle(fontSize: 20)),
+            ),
         ],
       ),
     );
