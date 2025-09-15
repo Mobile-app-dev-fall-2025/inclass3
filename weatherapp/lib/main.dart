@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import "dart:math";
 
 void main() {
   runApp(MyApp());
@@ -16,11 +17,9 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
 class _TabsNonScrollableDemo extends StatefulWidget {
   @override
-  __TabsNonScrollableDemoState createState() =>
-  __TabsNonScrollableDemoState();
+  __TabsNonScrollableDemoState createState() => __TabsNonScrollableDemoState();
 }
 
 class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
@@ -29,7 +28,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
   final RestorableInt tabIndex = RestorableInt(0);
 
-  //weather state variables
+  // Weather state variables
   final TextEditingController _cityController = TextEditingController();
   String _cityName = "---";
   String _temperature = "---";
@@ -48,10 +47,10 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   void initState() {
     super.initState();
     _tabController = TabController(
-    initialIndex: 0,
-    length: 4,
-    vsync: this,
-  );
+      initialIndex: 0,
+      length: 4,
+      vsync: this,
+    );
 
     _tabController.addListener(() {
       setState(() {
@@ -64,30 +63,43 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
   void dispose() {
     _tabController.dispose();
     tabIndex.dispose();
+    _cityController.dispose();
     super.dispose();
+  }
+
+  // Simulate weather data
+  void _simulateWeather(String city) {
+    final random = Random();
+    final int temperature = 15 + random.nextInt(16); // 15–30
+    final List<String> conditions = ["Sunny", "Cloudy", "Rainy"];
+    final String condition = conditions[random.nextInt(conditions.length)];
+
+    setState(() {
+      _cityName = city;
+      _temperature = "$temperature°C";
+      _condition = condition;
+    });
   }
 
   @override
   Widget build(BuildContext context) {
+    final tabs = ['Weather', 'Tab 2', 'Tab 3', 'Tab 4'];
 
-  final tabs = ['Weather', 'Tab 2', 'Tab 3', 'Tab 4'];
-  
-  return Scaffold(
-    appBar: AppBar(
-      automaticallyImplyLeading: false,
-      title: Text('Tabs Demo',),
-      bottom: TabBar(
-        controller: _tabController,
-        isScrollable: false,
-        tabs: [
-          for (final tab in tabs) Tab(text: tab),
-        ],
+    return Scaffold(
+      appBar: AppBar(
+        automaticallyImplyLeading: false,
+        title: Text('Tabs Demo'),
+        bottom: TabBar(
+          controller: _tabController,
+          isScrollable: false,
+          tabs: [
+            for (final tab in tabs) Tab(text: tab),
+          ],
+        ),
       ),
-    ),
-
-    body: TabBarView(
-      controller: _tabController,
-      children: [
+      body: TabBarView(
+        controller: _tabController,
+        children: [
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -117,7 +129,6 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
             ),
           ),
 
-          // ✅ Other Tabs: Placeholders
           for (int i = 2; i <= 4; i++)
             Center(
               child: Text("Content for Tab $i",
