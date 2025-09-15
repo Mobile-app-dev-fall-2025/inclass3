@@ -128,13 +128,31 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
 
           // Third tab → default text
           Center(
-            child: ElevatedButton(
-              onPressed: () {
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Button pressed in ${tabs[2]} tab!')),
-                );
-              },
-              child: Text('Click me'),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Cat Dev',
+                  style: TextStyle(
+                    fontSize: 60, // make text bigger
+                    fontWeight: FontWeight.bold, // bold text
+                    color: const Color.fromARGB(
+                      255,
+                      3,
+                      250,
+                      56,
+                    ), // custom color
+                    letterSpacing: 2, // space between letters
+                  ),
+                  textAlign: TextAlign.center, // center align text
+                ),
+                SizedBox(height: 20), // space between textfield and image
+                Image.network(
+                  'https://media4.giphy.com/media/v1.Y2lkPTc5MGI3NjExM3FhNjNhNHBnYzl0ZzNxZ2hsZ3ZhN2R3YThyNnM3aW1zcHYxNm9xdiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/lJNoBCvQYp7nq/giphy.gif', // replace with real URL
+                  width: 300,
+                  height: 300,
+                ),
+              ],
             ),
           ),
 
