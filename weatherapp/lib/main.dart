@@ -25,14 +25,17 @@ class _TabsNonScrollableDemo extends StatefulWidget {
 class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     with SingleTickerProviderStateMixin, RestorationMixin {
   late TabController _tabController;
-
   final RestorableInt tabIndex = RestorableInt(0);
 
-  // Weather state variables
+  //weather variables tab 1
   final TextEditingController _cityController = TextEditingController();
-  String _cityName = "_____";
-  String _temperature = "_____";
-  String _condition = "_____";
+  String _cityName = "______";
+  String _temperature = "______";
+  String _condition = "______";
+
+  //7 day forecast storage tab 2
+  final TextEditingController _forecastCityController = TextEditingController();
+  List<Map<String, String>> _forecast = [];
 
   @override
   String get restorationId => 'tab_non_scrollable_demo';
@@ -64,10 +67,11 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     _tabController.dispose();
     tabIndex.dispose();
     _cityController.dispose();
+    _forecastCityController.dispose();
     super.dispose();
   }
 
-  // Simulate weather data
+  //current weather 
   void _simulateWeather(String city) {
     final random = Random();
     final int temperature = 70;
@@ -81,10 +85,30 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
     });
   }
 
+  //7 day weather
+  void _simulateForecast(String city) {
+    final random = Random();
+    final List<String> conditions = ["Sunny", "Cloudy", "Rainy"];
+
+    List<Map<String, String>> forecast = [];
+    for (int i = 1; i <= 7; i++) {
+      int temp = 15 + random.nextInt(16);
+      String cond = conditions[random.nextInt(conditions.length)];
+      forecast.add({
+        "day": "Day $i",
+        "temp": "$temp°C",
+        "cond": cond,
+      });
+    }
+
+    setState(() {
+      _forecast = forecast;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    final tabs = ['Weather', 'Tab 2', 'Tab 3', 'Tab 4'];
-    //idk what im supposed to put on diff tabs
+    final tabs = ['Weather', '7-Day Forecast', 'Tab 3', 'Tab 4'];
 
     return Scaffold(
       appBar: AppBar(
@@ -101,6 +125,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
       body: TabBarView(
         controller: _tabController,
         children: [
+          //tab 1: display current 
           Padding(
             padding: const EdgeInsets.all(16.0),
             child: Column(
@@ -110,7 +135,7 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                   controller: _cityController,
                   decoration: const InputDecoration(
                     border: OutlineInputBorder(),
-                    labelText: "Enter city name:",
+                    labelText: "Enter city name",
                   ),
                 ),
                 const SizedBox(height: 10),
@@ -124,17 +149,71 @@ class __TabsNonScrollableDemoState extends State<_TabsNonScrollableDemo>
                 ),
                 const SizedBox(height: 20),
                 Text("City: $_cityName", style: const TextStyle(fontSize: 18)),
-                Text("Temperature: $_temperature", style: const TextStyle(fontSize: 18)),
-                Text("Condition: $_condition", style: const TextStyle(fontSize: 18)),
+                Text("Temperature: $_temperature",
+                    style: const TextStyle(fontSize: 18)),
+                Text("Condition: $_condition",
+                    style: const TextStyle(fontSize: 18)),
               ],
             ),
           ),
 
-          for (int i = 2; i <= 4; i++)
-            Center(
-              child: Text("Content for Tab $i",
-                  style: const TextStyle(fontSize: 20)),
+          //tab 2: 7 day forecast
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: [
+                TextField(
+                  controller: _forecastCityController,
+                  decoration: const InputDecoration(
+                    border: OutlineInputBorder(),
+                    labelText: "Enter city name",
+                  ),
+                ),
+                const SizedBox(height: 10),
+                ElevatedButton(
+                  onPressed: () {
+                    if (_forecastCityController.text.isNotEmpty) {
+                      _simulateForecast(_forecastCityController.text);
+                    }
+                  },
+                  child: const Text("Fetch 7-Day Forecast"),
+                ),
+                const SizedBox(height: 20),
+                if (_forecast.isNotEmpty) ...[
+                  Text("7-Day Forecast for ${_forecastCityController.text}",
+                      style: const TextStyle(
+                          fontSize: 20, fontWeight: FontWeight.bold)),
+                  const SizedBox(height: 10),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: _forecast.length,
+                      itemBuilder: (context, index) {
+                        final dayForecast = _forecast[index];
+                        return Card(
+                          child: ListTile(
+                            title: Text(dayForecast["day"]!),
+                            subtitle: Text(
+                                "${dayForecast["temp"]} - ${dayForecast["cond"]}"),
+                          ),
+                        );
+                      },
+                    ),
+                  ),
+                ]
+              ],
             ),
+          ),
+
+          //tab 3 and 4 blank
+          Center(
+            child: Text("Content for Tab 3",
+                style: const TextStyle(fontSize: 20)),
+          ),
+          Center(
+            child: Text("Content for Tab 4",
+                style: const TextStyle(fontSize: 20)),
+          ),
         ],
       ),
     );
